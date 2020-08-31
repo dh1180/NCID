@@ -1,0 +1,42 @@
+* {
+font-family: 궁서체;
+}
+
+.main {
+
+color: white;
+background-color: black;
+padding: 70px;
+}
+
+.title {
+
+font-size: 50px;
+
+}
+
+.menubar li:hover ul {
+display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
+}
+
+
+.menubar li ul {
+background: black;
+display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+height:auto;
+padding:10px;
+margin:0px;
+border:0px;
+position:absolute;
+width:200px;
+z-index:200;
+}
+
+li{
+   list-style:none;
+   }
+
+a:link {text-decoration: none; color: white;}
+a:visited {text-decoration: none; color: white;}
+a:active {text-decoration: none; color: white;}
+a:hover {text-decoration: underline; color: white;}

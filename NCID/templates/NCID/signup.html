@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>회원가입</h1>
+<form action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+    이름:
+    <br>
+    <input name="name" type="text">
+    <br>
+    학번:
+    <br>
+    <input name="student_ID" type="text">
+    <br>
+    Password:
+    <br>
+    <input name="password" type="password">
+    <br>
+    Password confirm:
+    <br>
+    <input name="repassword" type="password">
+    <br>
+    <input type="submit" value="회원가입">
+</form>
+
+
+
+{% endblock %}

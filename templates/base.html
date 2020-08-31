@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'NCID/style.css' %}">
+    <meta charset="UTF-8">
+    <title>진로진학정보부</title>
+
+</head>
+<body>
+<div class="main">
+    <div style="font-size: 100px;">
+        <a href="{% url 'list' %}">NCID</a>
+    </div>
+
+    <div style="float: right; font-size: 50px;">
+        {% if user.is_authenticated %}
+                {{ user.email }}님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class = menubar style="float: right;">
+        <li>메뉴 &nbsp;&nbsp;
+            <ul>
+                <li><a href="{% url 'add' %}">글쓰기</a></li>
+                <li><a href="{% url 'bookmark_list' %}">북마크</a></li>
+                <li><a href="{% url 'logout' %}">로그아웃</a></li>
+            </ul>
+        </li>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}">로그인</a>
+        {% endif %}
+    </div>
+</div>
+
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

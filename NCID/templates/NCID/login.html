@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>로그인</h1>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    학번:
+    <br>
+    <input name="student_ID" type="text">
+    <br>
+    Password:
+    <br>
+    <input name="password" type="password">
+    <br>
+    <br><br>
+    <input type="submit" value="login">
+</form>
+<h1>계정이 없으신가요?</h1>
+<a href="{% url 'signup' %}" style="color: black;">회원가입</a>
+
+
+
+{% endblock %}

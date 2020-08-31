@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="list">
+
+{% for NPC in object_list %}
+
+    <div class="title">
+{{forloop.counter}}
+
+     <a href="{% url 'detail' pk=NPC.id %}" style="color: black">{{NPC.title}}</a>
+        </div>
+    <p>{{ NPC.contents|linebreaksbr }}</p>
+    {% if user.is_authenticated %}
+ <h1>   <a href="{% url 'update' pk=NPC.id %}" style="color: black">Update</a>
+        <a href="{% url 'delete' pk=NPC.id %}" style="color: black">Delete</a> </h1>
+    <br>
+    {% else %}
+    {% endif %}
+
+    {% endfor %}
+
+</div>
+
+
+
+
+{% endblock %}
