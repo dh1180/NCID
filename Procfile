@@ -1,0 +1,1 @@
+web: gunicorn NCID.wsgi --log-file -
