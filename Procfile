@@ -1,1 +1,1 @@
-web: gunicorn NCID.wsgi
+web: gunicorn config.wsgi
