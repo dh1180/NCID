@@ -1,1 +1,1 @@
-web: gunicorn NCID.wsgi --log-file -
+web: gunicorn NCID.wsgi
