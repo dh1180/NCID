@@ -5,4 +5,11 @@
 {{object.title}}<br>
 {{object.contents}}
 
+    {% if user.is_authenticated %}
+<br>
+        <a href="{% url 'update' pk=object.pk %}" style="color: black">수정</a>
+        <a href="{% url 'delete' pk=object.pk %}" style="color: black">삭제</a>
+    {% else %}
+    {% endif %}
+
 {% endblock %}

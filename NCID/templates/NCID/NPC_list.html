@@ -2,26 +2,30 @@
 
 {% block content %}
 
-<div class="list">
+<div class="container">
 
-{% for NPC in object_list %}
 
-    <div class="title">
-{{forloop.counter}}
-
-     <a href="{% url 'detail' pk=NPC.id %}" style="color: black">{{NPC.title}}</a>
-        </div>
-    <p>{{ NPC.contents|linebreaksbr }}</p>
-    {% if user.is_authenticated %}
- <h1>   <a href="{% url 'update' pk=NPC.id %}" style="color: black">Update</a>
-        <a href="{% url 'delete' pk=NPC.id %}" style="color: black">Delete</a> </h1>
+    <div class="table table-hover">
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                </tr>
+            </thead>
+            {% for NPC in object_list %}
+            <tbody>
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url 'detail' pk=NPC.pk %}" style="color: black">{{NPC.title}}</a></td>
+                    {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <br>
-    {% else %}
-    {% endif %}
-
-    {% endfor %}
-
 </div>
+
 
 
 

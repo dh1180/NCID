@@ -3,7 +3,10 @@
 
 
 <h1>{{ object.url_title }}<br>
-    {{ object.url }}</h1>
+    {{ object.url }}
+        <br>
+        <a href="{% url 'bookmark_update' pk=object.pk %}" style="color: black;">수정</a>
+        <a href="{% url 'bookmark_delete' pk=object.pk %}" style="color: black;">삭제</a> </h1>
 
 
 

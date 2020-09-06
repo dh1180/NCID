@@ -5,23 +5,44 @@
 
 </div>
 
-<div class="list">
+<div class="container">
 
-{% for Bookmark in object_list %}
 
-    <div class="title">
-{{ forloop.counter }}
-        <a href="{% url 'bookmark_detail' pk=Bookmark.id %}" style="color: black;">{{Bookmark.url_title}}</a><br>
+    <div class="table table-hover">
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>url</th>
+                </tr>
+            </thead>
+            {% for Bookmark in object_list %}
+            <tbody>
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black;">{{Bookmark.url_title}}</a></td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="{{ Bookmark.url }}" style="color: black;">{{Bookmark.url}}</a></td>
+                    {% endfor %}
+            </tr>
+            </tbody>
+        </table>
     </div>
-        <a href="{{ Bookmark.url }}" style="color: black;">{{Bookmark.url}}</a>
-
- <h1>   <a href="{% url 'bookmark_update' pk=Bookmark.id %}" style="color: black;">Update</a>
-        <a href="{% url 'bookmark_delete' pk=Bookmark.id %}" style="color: black;">Delete</a> </h1>
     <br>
-
-    {% endfor %}
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
