@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import NPC_ListView, NPC_CreateView, NPC_DetailView, NPC_UpdateView, NPC_DeleteView
+from .views import NCID_ListView, NCID_CreateView, NCID_DetailView, NCID_UpdateView, NCID_DeleteView
 from . import views
 from .views import signup
 from . import views_chat
@@ -7,11 +7,11 @@ from .views_bookmark import  Bookmark_CreateView, Bookmark_DeleteView, Bookmark_
 from django.conf.urls import url
 
 urlpatterns = [
-    path('', NPC_ListView.as_view(), name = 'list'),
-    path('add/', NPC_CreateView.as_view(), name = 'add'),
-    path('detail/<int:pk>/', NPC_DetailView.as_view(), name='detail'),
-    path('update/<int:pk>/', NPC_UpdateView.as_view(), name='update'),
-    path('delete/<int:pk>/', NPC_DeleteView.as_view(), name='delete'),
+    path('', NCID_ListView.as_view(), name = 'list'),
+    path('add/', NCID_CreateView.as_view(), name = 'add'),
+    path('detail/<int:pk>/', NCID_DetailView.as_view(), name='detail'),
+    path('update/<int:pk>/', NCID_UpdateView.as_view(), name='update'),
+    path('delete/<int:pk>/', NCID_DeleteView.as_view(), name='delete'),
 
     path('signup/', signup, name='signup'),
     path('login/', views.login, name='login'),

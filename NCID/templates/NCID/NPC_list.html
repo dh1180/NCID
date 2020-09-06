@@ -2,9 +2,7 @@
 
 {% block content %}
 
-<div class="container">
-
-
+<div class="col-md-10">
     <div class="table table-hover">
         <table>
             <thead>
@@ -15,12 +13,13 @@
                 </tr>
             </thead>
             <tbody>
-            {% for NPC in object_list %}
-            <tr>
-                <td>{{forloop.counter}}</td>
-                <td width="500px"><a href="{% url 'detail' pk=NPC.pk %}" style="color: black">{{NPC.title}}</a></td>
-                <td>{{ NPC.time }}</td>
-
+            {% for NCID in object_list %}
+            <tr width="100%">
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <a href="{% url 'detail' pk=NCID.pk %}" style="color: black">{{ NCID.title }}</a>
+                </td>
+                <td>{{ NCID.time|date:"Y년 m월 d일 H:i" }}</td>
             </tr>
             {% endfor %}
             </tbody>

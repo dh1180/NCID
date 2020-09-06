@@ -2,65 +2,69 @@
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <style type="text/css">
-        * {font-family: "바탕체"}
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
+    <style>
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
     <title>진로진학정보부</title>
 
 </head>
 <body>
 
-
-<nav class="navbar navbar-expend bg-dark navbar-white">
-
-
-    <div style="font-size: 100px;">
-        <a href="{% url 'list' %}" style="float: left">NCID</a>
+<nav class="navbar bg-dark navbar-light">
+    <div style="font-size: 2.5em;">
+        <a href="{% url 'list' %}" style="float: left; color: white;">NCID</a>
     </div>
-    <div style="float: right; font-size: 50px; color: white">
+    <div>
         {% if user.is_authenticated %}
-                {{ user.email }}님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class = "dropdown" style="float: right">
+        <span style="margin-right: 30px; color: white;">{{ user.email }}님 안녕하세요</span>
+        <div class="dropdown" style="float: right">
             <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            메뉴
+                메뉴
             </button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="{% url 'add' %}">글쓰기</a>
                 <a class="dropdown-item" href="{% url 'bookmark_list' %}">북마크</a>
                 <a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a>
                 <a class="dropdown-item" href="{% url 'index' %}">채팅</a>
             </div>
         </div>
-    </div>
-
         {% else %}
-        <a href="{% url 'login' %}">로그인</a>
+        <a href="{% url 'login' %}" class="btn btn-primary">로그인</a>
         {% endif %}
-</nav>
-
-<div class="col-md-2">
-<div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title">입시 정보</h3>
     </div>
-    <ul class="list-group">
-      <li class="list-group-item"><a href="https://www.adiga.kr/EgovPageLink.do?link=EipMain">어디가</a></li>
-      <li class="list-group-item"><a href="http://campus.megastudy.net/campus_common/nsu/2020_univ/2020_m1.asp">주요 대학</a></li>
-    </ul>
-</div>
-</div>
+</nav>
+<div class="row">
+    <div class="col-md-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">입시 정보</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="https://www.adiga.kr/EgovPageLink.do?link=EipMain">어디가</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://campus.megastudy.net/campus_common/nsu/2020_univ/2020_m1.asp">주요 대학</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 {% block content %}
-
+</div>
 {% endblock %}
 </body>
 </html>

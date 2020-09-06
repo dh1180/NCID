@@ -13,29 +13,29 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-class NPC_ListView(ListView):
+class NCID_ListView(ListView):
     model = NPC
     template_name = 'NCID/NPC_list.html'
 
     def get_queryset(self):
         return NPC.objects.order_by('-time')
 
-class NPC_CreateView(CreateView):
+class NCID_CreateView(CreateView):
     model = NPC
     template_name = 'NCID/NPC_add.html'
     fields = ['title', 'contents']
     success_url = reverse_lazy('list')
 
-class NPC_DetailView(DetailView):
+class NCID_DetailView(DetailView):
     model = NPC
     template_name = 'NCID/NPC_detail.html'
 
-class NPC_UpdateView(UpdateView):
+class NCID_UpdateView(UpdateView):
     model = NPC
     fields = ['title', 'contents']
     template_name = 'NCID/NPC_update.html'
 
-class NPC_DeleteView(DeleteView):
+class NCID_DeleteView(DeleteView):
     model = NPC
     success_url = reverse_lazy('list')
     template_name = 'NCID/NPC_delete.html'
@@ -43,10 +43,11 @@ class NPC_DeleteView(DeleteView):
 def signup(request):
     if request.method == "POST":
         if request.POST["password"] == request.POST["repassword"]:
-            student_ID = request.POST['student_ID']
+            student_id = request.POST['student_id']
             name = request.POST['name']
             password = request.POST['password']
-            user = User.objects.create_user(student_ID, name, password)
+            user = User.objects.create_user(student_id, name, password)
+            user.is_active = False
             auth.login(request, user)
             return redirect('list')
         return redirect('signup')
@@ -56,9 +57,9 @@ def signup(request):
 def login(request):
     if request.method == 'POST':
 
-        student_ID = request.POST["student_ID"]
+        student_id = request.POST["student_id"]
         password = request.POST["password"]
-        user = authenticate(request, username=student_ID, password=password)
+        user = authenticate(request, username=student_id, password=password)
         if user is not None:
             auth.login(request, user)
             return redirect('list')

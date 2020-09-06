@@ -1,28 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="center-block" style='width:1000px'>
+<div class="col-md-10">
 <h1>회원가입</h1>
 <form action="{% url 'signup' %}" method="post">
     {% csrf_token %}
-    이름:
-    <br>
-    <input name="name" type="text">
-    <br>
-    학번:
-    <br>
-    <input name="student_ID" type="text">
-    <br>
-    Password:
-    <br>
-    <input name="password" type="password">
-    <br>
-    Password confirm:
-    <br>
-    <input name="repassword" type="password">
-    <br>
-    <br>
-    <input type="submit" value="회원가입">
+    <div class="form-group">
+        <label for="name">이름</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="student_id">학번</label>
+        <input type="text" class="form-control" id="student_id" name="student_id">
+    </div>
+    <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input type="password" class="form-control" name="password" id="password">
+    </div>
+    <div class="form-group">
+        <label for="repassword">비밀번호 재입력</label>
+        <input type="password" class="form-control" name="repassword" id="repassword">
+    </div>
+    <input type="submit" class="btn btn-dark" value="회원가입">
 </form>
 </div>
 
