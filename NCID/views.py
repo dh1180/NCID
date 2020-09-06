@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.contrib import auth
 from django.contrib.auth import authenticate
-
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 
@@ -16,6 +16,9 @@ from django.contrib.auth.models import User
 class NPC_ListView(ListView):
     model = NPC
     template_name = 'NCID/NPC_list.html'
+
+    def get_queryset(self):
+        return NPC.objects.order_by('-time')
 
 class NPC_CreateView(CreateView):
     model = NPC
@@ -58,7 +61,7 @@ def login(request):
         user = authenticate(request, username=student_ID, password=password)
         if user is not None:
             auth.login(request, user)
-            return render(request, 'NCID/NPC_list.html')
+            return redirect('list')
         else:
             return render(request, 'NCID/login.html', {'error': 'username or password is incorrect'})
 

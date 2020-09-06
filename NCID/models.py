@@ -7,6 +7,7 @@ from django.urls import reverse
 class NPC(models.Model):
     title = models.CharField(max_length=100)
     contents = models.TextField()
+    time = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.title
@@ -19,6 +20,7 @@ class NPC(models.Model):
 class NPC_bookmark(models.Model):
     url_title = models.CharField(max_length=100)
     url = models.URLField(max_length=500)
+    time = models.DateTimeField(auto_now_add=True, null=True)
 
     def get_absolute_url(self):
 

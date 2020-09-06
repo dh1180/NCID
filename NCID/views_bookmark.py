@@ -12,6 +12,9 @@ class Bookmark_ListView(ListView):
     model = NPC_bookmark
     template_name = 'NCID/Bookmark_list.html'
 
+    def get_queryset(self):
+        return NPC_bookmark.objects.order_by('-time')
+
 class Bookmark_CreateView(CreateView):
     model = NPC_bookmark
     template_name = 'NCID/Bookmark_create.html'

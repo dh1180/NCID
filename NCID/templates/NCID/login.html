@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="center-block" style='width:1000px';>
 <h1>로그인</h1>
 <form action="{% url 'login' %}" method="post">
     {% csrf_token %}
@@ -12,12 +13,12 @@
     <br>
     <input name="password" type="password">
     <br>
-    <br><br>
-    <input type="submit" value="login">
+    <br>
+    <input type="submit" value="로그인">
 </form>
 <h1>계정이 없으신가요?</h1>
-<a href="{% url 'signup' %}" style="color: black;">회원가입</a>
-
+    <button><a href="{% url 'signup' %}" style="color: black;">회원가입</a></button>
+</div>
 
 
 {% endblock %}

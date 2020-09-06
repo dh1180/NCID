@@ -11,15 +11,18 @@
                 <tr>
                     <th>번호</th>
                     <th>제목</th>
+                    <th>시간</th>
                 </tr>
             </thead>
-            {% for NPC in object_list %}
             <tbody>
+            {% for NPC in object_list %}
             <tr>
                 <td>{{forloop.counter}}</td>
-                <td><a href="{% url 'detail' pk=NPC.pk %}" style="color: black">{{NPC.title}}</a></td>
-                    {% endfor %}
+                <td width="500px"><a href="{% url 'detail' pk=NPC.pk %}" style="color: black">{{NPC.title}}</a></td>
+                <td>{{ NPC.time }}</td>
+
             </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="center-block" style='width:1000px'>
 <h1>회원가입</h1>
 <form action="{% url 'signup' %}" method="post">
     {% csrf_token %}
@@ -20,9 +21,10 @@
     <br>
     <input name="repassword" type="password">
     <br>
+    <br>
     <input type="submit" value="회원가입">
 </form>
-
+</div>
 
 
 {% endblock %}

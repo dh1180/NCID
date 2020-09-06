@@ -21,7 +21,7 @@
             <tbody>
             <tr>
                 <td>{{forloop.counter}}</td>
-                <td><a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black;">{{Bookmark.url_title}}</a></td>
+                <td width='300px'><a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black;">{{Bookmark.url_title}}</a></td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="{{ Bookmark.url }}" style="color: black;">{{Bookmark.url}}</a></td>
                     {% endfor %}
             </tr>
