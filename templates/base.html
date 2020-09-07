@@ -14,7 +14,7 @@
             crossorigin="anonymous"></script>
 
     <style>
-
+        * {font-family: '나눔 고딕'}
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
@@ -48,24 +48,19 @@
 </nav>
 <div class="row">
     <div class="col-md-2">
-        <div class="nav nav-tabs tabs-left">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">입시 정보</h3>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="https://www.adiga.kr/EgovPageLink.do?link=EipMain">어디가</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://campus.megastudy.net/campus_common/nsu/2020_univ/2020_m1.asp">주요 대학</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <ul class="list-group">
+            <br>
 
-    {% block content %}
+            <h3 class="">입시 정보</h3>
+            <li class="list-group-item list-group-item-action">
+                <a href="https://www.adiga.kr/EgovPageLink.do?link=EipMain">어디가</a>
+            </li>
+            <li class="list-group-item list-group-item-action">
+                <a href="http://campus.megastudy.net/campus_common/nsu/2020_univ/2020_m1.asp">주요 대학</a>
+            </li>
+        </ul>
+    </div>
+{% block content %}
 </div>
 {% endblock %}
 </body>
