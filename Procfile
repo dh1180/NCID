@@ -1,1 +1,1 @@
-web: daphne config.asgi:channel_layer
+web: daphne config.asgi:application

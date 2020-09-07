@@ -48,22 +48,24 @@
 </nav>
 <div class="row">
     <div class="col-md-2">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">입시 정보</h3>
+        <div class="nav nav-tabs tabs-left">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">입시 정보</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="https://www.adiga.kr/EgovPageLink.do?link=EipMain">어디가</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://campus.megastudy.net/campus_common/nsu/2020_univ/2020_m1.asp">주요 대학</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="https://www.adiga.kr/EgovPageLink.do?link=EipMain">어디가</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="http://campus.megastudy.net/campus_common/nsu/2020_univ/2020_m1.asp">주요 대학</a>
-                </li>
-            </ul>
         </div>
     </div>
 
-{% block content %}
+    {% block content %}
 </div>
 {% endblock %}
 </body>
