@@ -5,12 +5,11 @@
 <div class="col-md-10">
 
     <br>
-    {% if user.is_authenticated %}
+
     <div style="float: right; font-size: 200%;" class="btn btn-dark">
         <a href="{% url 'add' %}" style="color: white">글쓰기</a>
     </div>
-    {% else %}
-    {% endif %}
+
 
     <div class="table table-hover">
         <table>
@@ -38,7 +37,6 @@
 </div>
 
 <div class="col-xs-12">
-
 
 
     <div>

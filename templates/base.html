@@ -16,6 +16,7 @@
     <style>
         * {font-family: '나눔 고딕'}
 
+
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,6 +33,7 @@
     <div>
         {% if user.is_authenticated %}
         <span style="margin-right: 30px; color: white;">{{ user.email }}님 안녕하세요</span>
+        {% else %}
         <div class="dropdown" style="float: right">
             <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 메뉴
@@ -43,7 +45,6 @@
                 <a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a>
             </div>
         </div>
-        {% else %}
         <a href="{% url 'login' %}" class="btn btn-primary">로그인</a>
         {% endif %}
     </div>
