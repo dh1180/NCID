@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="col-md-8">
+    <br>
+    <h1>제목: {{ object.url_title }}</h1>
+    <br>
+    <a href="{{ object.url }}">{{ object.url }}</a>
+    <br>
+    <br>
+    <a href="{% url 'bookmark_update' pk=object.pk %}" style="color: black;">수정</a>
+    <a href="{% url 'bookmark_delete' pk=object.pk %}" style="color: black;">삭제</a>
 
-<h1>{{ object.url_title }}<br>
-    {{ object.url }}
-        <br>
-        <a href="{% url 'bookmark_update' pk=object.pk %}" style="color: black;">수정</a>
-        <a href="{% url 'bookmark_delete' pk=object.pk %}" style="color: black;">삭제</a> </h1>
 
-
-
-{% endblock %}
+    {% endblock %}

@@ -1,50 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
-<div style="float: right; font-size: 50px; color: white; background-color: black;">
-         <a href="{% url 'bookmark_create' %}" >북마크 생성</a>
 
-</div>
+<div class="col-md-10">
 
-<div class="container">
+    <br>
+    <div style="float: right; font-size: 200%;" class="btn btn-dark">
+        <a href="{% url 'bookmark_create' %}" style="color: white">북마크 생성</a>
+    </div>
 
 
     <div class="table table-hover">
         <table>
             <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>url</th>
-                </tr>
-            </thead>
-            {% for Bookmark in object_list %}
-            <tbody>
             <tr>
-                <td>{{forloop.counter}}</td>
-                <td width='300px'><a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black;">{{Bookmark.url_title}}</a></td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="{{ Bookmark.url }}" style="color: black;">{{Bookmark.url}}</a></td>
-                    {% endfor %}
+                <th>번호</th>
+                <th>제목</th>
+                <th>url</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for Bookmark in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td width='50%'><a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black;">{{Bookmark.url_title}}</a>
+                </td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="{{ Bookmark.url }}"
+                                                                                               style="color: black;">{{Bookmark.url}}</a>
+                </td>
+                {% endfor %}
             </tr>
             </tbody>
         </table>
     </div>
     <br>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {% endblock %}

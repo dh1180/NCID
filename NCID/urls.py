@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import NCID_ListView, NCID_CreateView, NCID_DetailView, NCID_UpdateView, NCID_DeleteView
+from .views import NCID_ListView, NCID_CreateView, NCID_DetailView, NCID_UpdateView, NCID_DeleteView, grade
 from . import views
 from .views import signup
 from . import views_chat
@@ -25,6 +25,8 @@ urlpatterns = [
 
     path('chat/', views_chat.index, name='index'),
     path('chat/<room_name>/', views_chat.room, name='room'),
+
+    path('grade/', views.grade, name='grade'),
 
 
 ]

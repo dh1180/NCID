@@ -2,22 +2,30 @@
 
 {% block content %}
 
-
 <div class="col-md-10">
+
+    <br>
+    {% if user.is_authenticated %}
+    <div style="float: right; font-size: 200%;" class="btn btn-dark">
+        <a href="{% url 'add' %}" style="color: white">글쓰기</a>
+    </div>
+    {% else %}
+    {% endif %}
+
     <div class="table table-hover">
         <table>
             <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>시간</th>
-                </tr>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>시간</th>
+            </tr>
             </thead>
             <tbody>
             {% for NCID in object_list %}
-            <tr width="100%">
+            <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>
+                <td width="50%">
                     <a href="{% url 'detail' pk=NCID.pk %}" style="color: black">{{ NCID.title }}</a>
                 </td>
                 <td>{{ NCID.time|date:"Y년 m월 d일 H:i" }}</td>
@@ -29,8 +37,11 @@
     <br>
 </div>
 
+<div class="col-xs-12">
 
 
 
+    <div>
 
-{% endblock %}
+
+        {% endblock %}

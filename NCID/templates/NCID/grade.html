@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-md-10">
+
+    <label for="students">학생수 :</label>
+    <input type="number" name="students" id="students"><br>
+    <label for="rank">등수 :</label>
+    <input type="number" name="rank" id="rank"><br>
+
+    <span id="grade"></span>
+    
+    <br>
+
+    <script>
+
+    let students = 0;
+    let rank = 0;
+    let result = 0;
+
+    document.getElementById("students").addEventListener('input', e => {
+    students = Number(e.target.value);
+    result = rank / students;
+    document.getElementById('grade').innerText = result;
+
+  })
+
+  document.getElementById("rank").addEventListener('input', a => {
+      rank = Number(a.target.value);
+      result = rank / students;
+
+      if (result <= 0.04) {
+      document.getElementById("grade").innerText = "1등급 입니다";
+  }
+  else if (result <= 0.11) {
+      document.getElementById('grade').innerText = "2등급입니다";
+  }
+  else if (result <= 0.23) {
+      document.getElementById('grade').innerText = "3등급입니다";
+  }
+  else if (result <= 0.4) {
+      document.getElementById('grade').innerText = "4등급입니다";
+  }
+  else if (result <= 0.6) {
+      document.getElementById('grade').innerText = "5등급입니다";
+  }
+  else if (result <= 0.77) {
+      document.getElementById('grade').innerText = "6등급입니다";
+  }
+  else if (result <= 0.89) {
+      document.getElementById('grade').innerText = "7등급입니다";
+  }
+  else if (result <= 0.96) {
+      document.getElementById('grade').innerText = "8등급입니다";
+  }
+  else {document.getElementById('grade').innerText = "9등급입니다";}
+  })
+
+    </script>
+
+</div>
+
+{% endblock %}

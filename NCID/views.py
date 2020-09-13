@@ -73,3 +73,6 @@ def logout(request):
     auth.logout(request)
     return redirect('list')
 
+def grade(request):
+    return render(request, "NCID/grade.html")
+

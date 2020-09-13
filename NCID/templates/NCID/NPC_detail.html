@@ -2,15 +2,20 @@
 
 {% block content %}
 
-<h1>제목: {{object.title}}</h1>
-<br>
-{{object.contents}}
+<div class="col-md-7">
+    <br>
+    <h1>제목: {{object.title}}</h1>
+    <br>
+    {{object.contents}}
 
-{% if user.is_authenticated %}
-<br>
-<a href="{% url 'update' pk=object.pk %}" style="color: black">수정</a>
-<a href="{% url 'delete' pk=object.pk %}" style="color: black">삭제</a>
-{% else %}
-{% endif %}
+    {% if user.is_authenticated %}
+    <br>
+    <br>
+
+    <a href="{% url 'update' pk=object.pk %}" style="color: black">수정</a>
+    <a href="{% url 'delete' pk=object.pk %}" style="color: black">삭제</a>
+    {% else %}
+    {% endif %}
+</div>
 
 {% endblock %}
