@@ -76,3 +76,6 @@ def logout(request):
 def grade(request):
     return render(request, "NCID/grade.html")
 
+def university(request):
+    return render(request, "NCID/university.html")
+

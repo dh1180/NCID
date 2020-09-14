@@ -1,18 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col-md-10">
+<div class="col-md-4">
 
-    <label for="students">학생수 :</label>
-    <input type="number" name="students" id="students"><br>
-    <label for="rank">등수 :</label>
-    <input type="number" name="rank" id="rank"><br>
-
-    <span id="grade"></span>
-    
     <br>
+    <label for="students">학생수 :</label>
+    <input type="number" class="form-control" name="students" id="students"><br>
+    <label for="rank">등수 :</label>
+    <input type="number" class="form-control" name="rank" id="rank"><br>
+    <span id="grade"></span>
+    <br><br>
 
-    <script>
+    <form method="GET">
+    <div class="form-control">
+        <h3>이과</h3>
+        <br>
+        <label for="language">국어 :</label>
+        <input type="number" class="form-control" name="language" id="language"><br>
+        <label for="math">수학 :</label>
+        <input type="number" class="form-control" name="language" id="math"><br>
+        <label for="english">영어 :</label>
+        <input type="number" class="form-control" name="language" id="english"><br>
+        <label for="science">과학 :</label>
+        <input type="number" class="form-control" name="language" id="science"><br>
+        <input type="submit" class="btn btn-dark" value="확인" onclick="return averge();"> 
+    </div>
+    </form>
+</div>
+
+<div class="col-md-4">
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <div class="form-control">
+        <h3>문과</h3>
+        <br>
+        <label for="language1">국어 :</label>
+        <input type="number" class="form-control" name="language" id="language1"><br>
+        <label for="math1">수학 :</label>
+        <input type="number" class="form-control" name="language" id="math1"><br>
+        <label for="english1">영어 :</label>
+        <input type="number" class="form-control" name="language" id="english1"><br>
+        <label for="society1">사회 :</label>
+        <input type="number" class="form-control" name="language" id="society1"><br>
+        <input type="submit" class="btn btn-dark" value="확인" onclick="return averge1();"> 
+    </div>
+</div>
+
+
+<br>
+
+
+<script>
 
     let students = 0;
     let rank = 0;
@@ -56,8 +93,27 @@
   else {document.getElementById('grade').innerText = "9등급입니다";}
   })
 
-    </script>
+  function averge() {
+    let language = Number(document.getElementById("language").value);
+    let math = Number(document.getElementById("math").value);
+    let english = Number(document.getElementById("english").value);
+    let science = Number(document.getElementById("science").value);
+    alert("당신의 이과 평균 등급은 " + (language + math + english + science)/4 + "등급입니다.")
+}
 
-</div>
+function averge1() {
+    let language1 = Number(document.getElementById("language1").value);
+    let math1 = Number(document.getElementById("math1").value);
+    let english1 = Number(document.getElementById("english1").value);
+    let society1 = Number(document.getElementById("society1").value);
+    alert("당신의 문과 평균 등급은 " + (language1 + math1 + english1 + society1)/4 + "등급입니다.");
+}
 
+
+
+
+
+
+
+</script>
 {% endblock %}
