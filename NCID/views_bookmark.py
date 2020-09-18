@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 class Bookmark_ListView(ListView):
     model = NPC_bookmark
     template_name = 'NCID/Bookmark_list.html'
+    paginate_by = 5
 
     def get_queryset(self):
         return NPC_bookmark.objects.order_by('time')

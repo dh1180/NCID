@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 class NCID_ListView(ListView):
     model = NPC
     template_name = 'NCID/NPC_list.html'
+    paginate_by = 5
 
     def get_queryset(self):
         return NPC.objects.order_by('-time')
