@@ -53,45 +53,49 @@
 
     let students = 0;
     let rank = 0;
-    let result = 0;
 
     document.getElementById("students").addEventListener('input', e => {
     students = Number(e.target.value);
-    result = rank / students;
-    document.getElementById('grade').innerText = result;
+    result(rank)
+
 
   })
 
   document.getElementById("rank").addEventListener('input', a => {
       rank = Number(a.target.value);
-      result = rank / students;
+      result(rank)
 
-      if (result <= 0.04) {
+  })
+
+
+function result(rank) {
+      if (rank <= (4/100 * students).toFixed(2)) {
       document.getElementById("grade").innerText = "1등급 입니다";
   }
-  else if (result <= 0.11) {
+  else if (rank <= (11/100 * students).toFixed(2)) {
       document.getElementById('grade').innerText = "2등급입니다";
   }
-  else if (result <= 0.23) {
+  else if (rank <= (23/100 * students).toFixed(2)) {
       document.getElementById('grade').innerText = "3등급입니다";
   }
-  else if (result <= 0.4) {
+  else if (rank <= (40/100 * students).toFixed(2)) {
       document.getElementById('grade').innerText = "4등급입니다";
   }
-  else if (result <= 0.6) {
+  else if (rank <= (60/100 * students).toFixed(2)) {
       document.getElementById('grade').innerText = "5등급입니다";
   }
-  else if (result <= 0.77) {
+  else if (rank <= (77/100 * students).toFixed(2)) {
       document.getElementById('grade').innerText = "6등급입니다";
   }
-  else if (result <= 0.89) {
+  else if (rank <= (89/100 * students).toFixed(2)) {
       document.getElementById('grade').innerText = "7등급입니다";
   }
-  else if (result <= 0.96) {
+  else if (rank <= (96/100 * students).toFixed(2)) {
       document.getElementById('grade').innerText = "8등급입니다";
   }
   else {document.getElementById('grade').innerText = "9등급입니다";}
-  })
+  }
+
 
   function averge() {
     let language = Number(document.getElementById("language").value);

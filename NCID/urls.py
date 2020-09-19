@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import NCID_ListView, NCID_CreateView, NCID_DetailView, NCID_UpdateView, NCID_DeleteView
-from . import views
+from . import views, views_bookmark
 from .views import signup
 from . import views_chat
 from .views_bookmark import  Bookmark_CreateView, Bookmark_DeleteView, Bookmark_DetailView, Bookmark_ListView, Bookmark_UpdateView
@@ -29,6 +29,9 @@ urlpatterns = [
     path('grade/', views.grade, name='grade'),
 
     path('university/', views.university, name='university'),
+
+    path('search/', views.search, name='search'),
+    path('search_bookmark/', views_bookmark.search_bookmark, name='search_bookmark'),
 
 
 ]

@@ -21,6 +21,20 @@ class NCID_ListView(ListView):
     def get_queryset(self):
         return NPC.objects.order_by('-time')
 
+
+def search(request):
+    blogs = NPC.objects.all().order_by('-time')
+
+    q = request.POST.get('q', "")
+
+    if q:
+        blogs = blogs.filter(title__icontains=q)
+        return render(request, 'NCID/search.html', {'blogs': blogs, 'q': q})
+
+    else:
+        return render(request, 'NCID/search.html')
+
+
 class NCID_CreateView(CreateView):
     model = NPC
     template_name = 'NCID/NPC_add.html'

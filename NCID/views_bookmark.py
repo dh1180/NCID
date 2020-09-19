@@ -16,6 +16,18 @@ class Bookmark_ListView(ListView):
     def get_queryset(self):
         return NPC_bookmark.objects.order_by('time')
 
+def search_bookmark(request):
+    blogs = NPC_bookmark.objects.all().order_by('-time')
+
+    q = request.POST.get('q', "")
+
+    if q:
+        blogs = blogs.filter(url_title__icontains=q)
+        return render(request, 'NCID/search_bookmark.html', {'blogs': blogs, 'q': q})
+
+    else:
+        return render(request, 'NCID/search_bookmark.html')
+
 class Bookmark_CreateView(CreateView):
     model = NPC_bookmark
     template_name = 'NCID/Bookmark_create.html'

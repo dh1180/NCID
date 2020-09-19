@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if not blogs %}
+
+<h1>검색 결과가 없습니다</h1>
+
+{% else %}
+<div class="col-md-10">
+    <div class="table table-hover">
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for Bookmark in blogs.all %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td width="50%">
+                    <a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black">{{ Bookmark.url_title }}</a>
+                </td>
+                <td>{{ Bookmark.time|date:"Y년 m월 d일 H:i" }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
