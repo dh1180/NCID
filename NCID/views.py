@@ -35,6 +35,7 @@ def search(request):
 
 def NCID_CreateView(request):
     npc = NPC()
+    npc.author = request.user.email
     npc.title = request.GET["title"]
     npc.contents = request.GET["contents"]
     npc.time = timezone.datetime.now()

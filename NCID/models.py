@@ -5,6 +5,7 @@ from django.urls import reverse
 
 
 class NPC(models.Model):
+    author = models.CharField(max_length=100, null=True)
     title = models.CharField(max_length=100)
     contents = models.TextField()
     time = models.DateTimeField(auto_now_add=True, null=True)
@@ -18,6 +19,7 @@ class NPC(models.Model):
 
 
 class NPC_bookmark(models.Model):
+    author = models.CharField(max_length=100, null=True)
     url_title = models.CharField(max_length=100)
     url = models.URLField(max_length=500)
     time = models.DateTimeField(auto_now_add=True, null=True)
