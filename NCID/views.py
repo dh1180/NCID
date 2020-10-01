@@ -8,29 +8,6 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.utils import timezone
 from django.contrib.auth.models import User
-import json
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from django.http import JsonResponse
-
-def school(request):
-    NPC_school.objects.all().delete()
-    driver = webdriver.Chrome("C:\\Users\\mjdh1\\Downloads\\chromedriver_win32\\chromedriver.exe")
-    url = "https://school.iamservice.net/organization/10135/group/2015103"
-    driver.get(url)
-    web_page = driver.page_source
-    soup = BeautifulSoup(web_page, "html.parser")
-    select = soup.select(
-        "div.newsList"
-    )
-
-    for i in select:
-        NPC(
-            contets = i[0].text
-        ).save()
-
-        return JsonResponse({'search list': list(NPC_school.objects.values())}, status=200)
-
 
 # Create your views here.
 
