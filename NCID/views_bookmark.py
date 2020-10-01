@@ -7,6 +7,7 @@ from django.views.generic.detail import DetailView
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Bookmark_ListView(ListView):
     model = NPC_bookmark
@@ -14,7 +15,7 @@ class Bookmark_ListView(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        return NPC_bookmark.objects.order_by('time')
+        return NPC_bookmark.objects.order_by('-time')
 
 def search_bookmark(request):
     blogs = NPC_bookmark.objects.all().order_by('-time')
@@ -28,11 +29,16 @@ def search_bookmark(request):
     else:
         return render(request, 'NCID/search_bookmark.html')
 
-class Bookmark_CreateView(CreateView):
-    model = NPC_bookmark
-    template_name = 'NCID/Bookmark_create.html'
-    fields = ['url_title', 'url']
-    success_url = reverse_lazy('bookmark_list')
+def Bookmark_CreateView(request):
+    bookmark = NPC_bookmark()
+    bookmark.url_title = request.GET["url_title"]
+    bookmark.url = request.GET["url"]
+    bookmark.time = timezone.datetime.now()
+    bookmark.save()
+    return redirect("bookmark_list")
+
+def bookmark_create(request):
+    return render(request, "NCID/Bookmark_create.html")
 
 class Bookmark_DetailView(DetailView):
     model = NPC_bookmark

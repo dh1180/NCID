@@ -1,14 +1,35 @@
 from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
-from .models import NPC
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import NPC, NPC_school
+from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.utils import timezone
 from django.contrib.auth.models import User
+import json
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from django.http import JsonResponse
 
+def school(request):
+    NPC_school.objects.all().delete()
+    driver = webdriver.Chrome("C:\\Users\\mjdh1\\Downloads\\chromedriver_win32\\chromedriver.exe")
+    url = "https://school.iamservice.net/organization/10135/group/2015103"
+    driver.get(url)
+    web_page = driver.page_source
+    soup = BeautifulSoup(web_page, "html.parser")
+    select = soup.select(
+        "div.newsList"
+    )
+
+    for i in select:
+        NPC(
+            contets = i[0].text
+        ).save()
+
+        return JsonResponse({'search list': list(NPC_school.objects.values())}, status=200)
 
 
 # Create your views here.
@@ -35,20 +56,33 @@ def search(request):
         return render(request, 'NCID/search.html')
 
 
-class NCID_CreateView(CreateView):
-    model = NPC
-    template_name = 'NCID/NPC_add.html'
-    fields = ['title', 'contents']
-    success_url = reverse_lazy('list')
+def NCID_CreateView(request):
+    npc = NPC()
+    npc.title = request.GET["title"]
+    npc.contents = request.GET["contents"]
+    npc.time = timezone.datetime.now()
+    npc.save()
+    return redirect('list')
+
+def create(request):
+    return render(request, 'NCID/NPC_add.html')
 
 class NCID_DetailView(DetailView):
     model = NPC
     template_name = 'NCID/NPC_detail.html'
 
-class NCID_UpdateView(UpdateView):
-    model = NPC
-    fields = ['title', 'contents']
-    template_name = 'NCID/NPC_update.html'
+def NCID_UpdateView(request, pk):
+    npc_all = NPC.objects.all()
+    npc = NPC.objects.get(pk=pk)
+    if request.method == "POST":
+        npc.title = request.POST['title']
+        npc.contents = request.POST['contents']
+        npc.time = timezone.datetime.now()
+        npc.save()
+        return redirect('list')
+    else:
+        return render(request, 'NCID/NPC_update.html', {'npc_all': npc_all})
+
 
 class NCID_DeleteView(DeleteView):
     model = NPC

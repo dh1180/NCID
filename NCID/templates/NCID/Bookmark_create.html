@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="col-md-7">
 
-<form action="" method="post">
+    <form action="{% url 'bookmark_add' %}" method="get">
+        {% csrf_token %}
 
-    {% csrf_token %}
-    {{ form.as_p }}
+        <div class="form-group">
+            <input type="text" name="url_title" id="title" class="form-control mt-4 mb-2" placeholder="url_title"
+                   required>
 
-    <input type="submit" value="add">
+
+            <textarea type="text" name="url" class="form-control" placeholder="url" required></textarea>
+            <br>
+            <input class="btn btn-primary" type="submit" value="완료" style="float: right">
+        </div>
+</div>
 </form>
 
 {% endblock %}

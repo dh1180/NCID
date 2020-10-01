@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="center-block" style='width:1000px';>
+<div class="col-md-7">
 
-<form action="" method="post">
+    <form action="{% url 'NCID_add' %}" method="get">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" name="title" id="title" class="form-control mt-4 mb-2" placeholder="제목" required>
 
-    {% csrf_token %}
-    {{ form.as_p }}
 
-    <input type="submit" value="완료">
-</form>
+            <textarea type="text" name="contents" class="form-control" rows="10" placeholder="내용" required></textarea>
+            <br>
+            <input class="btn btn-primary" type="submit" value="완료" style="float: right">
+        </div>
+    </form>
 
 </div>
 

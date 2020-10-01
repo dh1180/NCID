@@ -4,7 +4,9 @@
 
 <div class="col-md-7">
     <br>
-    <h1>제목: {{object.title}}</h1>
+    <p style="font-weight: bold">{{object.title}}</p>
+    <p style="font-size: small">{{ object.time|date:"Y년 m월 d일 H:i" }}</p>
+    <hr>
     <br>
     {{object.contents}}
 
@@ -12,8 +14,8 @@
     <br>
     <br>
 
-    <a href="{% url 'update' pk=object.pk %}" style="color: black">수정</a>
-    <a href="{% url 'delete' pk=object.pk %}" style="color: black">삭제</a>
+    <a class="btn btn-danger" href="{% url 'delete' pk=object.pk %}" style="float: right">삭제</a>
+    <a class="btn btn-primary" href="{% url 'update' pk=object.pk %}" style="float: right">수정</a>
     {% else %}
     {% endif %}
 </div>
