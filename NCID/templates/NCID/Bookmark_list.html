@@ -24,8 +24,8 @@
                 <td>{{ forloop.counter }}</td>
                 <td width='50%'><a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black;">{{Bookmark.url_title}}</a>
                 </td>
-                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="{{ Bookmark.url }}"
-                                                                                               style="color: black;">{{Bookmark.url}}</a>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <a href="{{ Bookmark.url }}" style="color: black;">{{Bookmark.url}}</a>
                 </td>
                 {% endfor %}
             </tr>
@@ -38,13 +38,15 @@
     <div class="Page navigation example">
         <ul class="pagination">
             {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page=1">&laquo; 처음으로</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo;</a></li>&nbsp;
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>&nbsp;
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>&nbsp;
             {% endif %}
-            <li class="page-item active"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+            <li class="page-item active"><a class="page-link" href="#">{{ page_obj.number }}</a></li>&nbsp;
             {% if page_obj.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">맨 뒤로 &raquo;</a>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>&nbsp;
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&gt;</a></li>&nbsp;
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
             </li>
             {% endif %}
         </ul>

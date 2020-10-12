@@ -31,6 +31,7 @@ def search_bookmark(request):
 
 def Bookmark_CreateView(request):
     bookmark = NPC_bookmark()
+    bookmark.author = request.user.email
     bookmark.url_title = request.GET["url_title"]
     bookmark.url = request.GET["url"]
     bookmark.time = timezone.datetime.now()

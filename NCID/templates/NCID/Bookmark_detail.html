@@ -1,15 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col-md-8">
+<div class="col-md-7">
     <br>
-    <h1>제목: {{ object.url_title }}</h1>
+    <p style="font-weight: bold">{{object.url_title}}</p>
+    <p style="font-size: small">작성자: {{ object.author }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ object.time|date:"Y년 m월 d일 H:i"}}</p>
+    <hr>
     <br>
     <a href="{{ object.url }}">{{ object.url }}</a>
+
+    {% if user.email == object.author %}
     <br>
     <br>
-    <a href="{% url 'bookmark_update' pk=object.pk %}" style="color: black;">수정</a>
-    <a href="{% url 'bookmark_delete' pk=object.pk %}" style="color: black;">삭제</a>
+    <a class="btn btn-danger" href="{% url 'delete' pk=object.pk %}" style="float: right">삭제</a>
+    <a class="btn btn-primary" href="{% url 'update' pk=object.pk %}" style="float: right">수정</a>
+    {% else %}
+    {% endif %}
 
+</div>
 
-    {% endblock %}
+{% endblock %}

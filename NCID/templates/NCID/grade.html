@@ -2,7 +2,6 @@
 {% block content %}
 
 
-
 <div class="col-md-4">
 
     <br>
@@ -12,19 +11,21 @@
     <input type="number" class="form-control" name="rank" id="rank"><br>
     <span id="grade"></span>
     <br><br>
-<section class="section-preview" style="border: 1px solid #ccc!important; padding: 3%; border-radius: 16px;">
-    <div class="custom-control custom-radio">
-        <input class="custom-control-input" type="radio" name="radio" id="r1" value="1"><label class="custom-control-label" for="r1">이과</label>
-    </div>
+    <section class="section-preview" style="border: 1px solid #ccc!important; padding: 3%; border-radius: 16px;">
+        <div class="custom-control custom-radio">
+            <input class="custom-control-input" type="radio" name="radio" id="r1" value="1"><label
+                class="custom-control-label" for="r1">이과</label>
+        </div>
 
-    <div class="custom-control custom-radio">
-        <input class="custom-control-input" type="radio" name="radio" id="r2" value="0"><label class="custom-control-label" for="r2">문과</label>
-    </div>
-</section>
-<br>
-    
+        <div class="custom-control custom-radio">
+            <input class="custom-control-input" type="radio" name="radio" id="r2" value="0"><label
+                class="custom-control-label" for="r2">문과</label>
+        </div>
+    </section>
+    <br>
 
-      <script>
+
+    <script>
           $(document).ready(function(){
  
  $("input[name=radio]").click(function(){
@@ -40,10 +41,13 @@
  });
 });
 
-      </script>
-      
 
 
+    </script>
+</div>
+
+
+<div class="col-md-5" style="float: right">
     <div class="form-control" id="이과" style="display: none;">
         <h3>이과</h3>
         <br>
@@ -59,7 +63,6 @@
     </div>
 
 
-
     <div class="form-control" id="문과" style="display: none;">
         <h3>문과</h3>
         <br>
@@ -73,7 +76,6 @@
         <input type="number" class="form-control" id="society1"><br>
         <button class="btn btn-dark" onclick="average1()">확인</button>
     </div>
-
 </div>
 
 <br>
@@ -141,6 +143,8 @@ function average1() {
     let society1 = Number(document.getElementById("society1").value);
     alert("당신의 문과 평균 등급은 " + (language1 + math1 + english1 + society1)/4 + "등급입니다.");
 }
+
+
 
 
 </script>
