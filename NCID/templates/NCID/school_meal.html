@@ -27,7 +27,6 @@
                 <td width="50%">
                     <a href="{% url 'meal_detail' pk=NCID.pk %}" style="color: black">{{ NCID.title }}</a>
                 </td>
-                <td>{{ NCID.time|date:"Y년 m월 d일 H:i" }}</td>
             </tr>
             {% endfor %}
             </tbody>
