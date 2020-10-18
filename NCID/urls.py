@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import NCID_ListView, create, NCID_DetailView, NCID_UpdateView, NCID_DeleteView, NCID_CreateView, signup
-from . import views, views_bookmark, views_chat
+from . import views, views_bookmark, views_chat, view_crawling
 from .views_bookmark import  Bookmark_CreateView, Bookmark_DeleteView, Bookmark_DetailView, Bookmark_ListView, Bookmark_UpdateView, bookmark_create
+from .view_crawling import NCID_SchoolMeal_Detail, crawling, NCID_SchoolMeal_List
 from django.conf.urls import url
 
 urlpatterns = [
@@ -33,6 +34,11 @@ urlpatterns = [
 
     path('search/', views.search, name='search'),
     path('search_bookmark/', views_bookmark.search_bookmark, name='search_bookmark'),
+    path('search_meal/', view_crawling.search_meal, name='search_meal'),
+
+    path('meal/', NCID_SchoolMeal_List.as_view(), name='meal_list'),
+    path('meal/create', view_crawling.crawling, name='meal'),
+    path('meal/detail/<int:pk>/', NCID_SchoolMeal_Detail.as_view(), name='meal_detail'),
 
 
 ]

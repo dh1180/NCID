@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if not blogs %}
+
+<h1>검색 결과가 없습니다</h1>
+
+{% else %}
+<div class="col-md-10">
+    <div class="table table-hover">
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for NCID in blogs.all %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td width="50%">
+                    <a href="{% url 'meal_detail' pk=NCID.pk %}" style="color: black">{{ NCID.title }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

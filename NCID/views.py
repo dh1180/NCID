@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
-from .models import NPC, NPC_school
+from .models import NPC
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
