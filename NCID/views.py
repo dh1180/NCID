@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
-from .models import NPC
+from .models import NPC, User
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -35,7 +34,7 @@ def search(request):
 
 def NCID_CreateView(request):
     npc = NPC()
-    npc.author = request.user.email
+    npc.author = request.user.username
     npc.title = request.GET["title"]
     npc.contents = request.GET["contents"]
     npc.time = timezone.datetime.now()
