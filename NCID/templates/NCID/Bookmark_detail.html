@@ -9,11 +9,11 @@
     <br>
     <a href="{{ object.url }}">{{ object.url }}</a>
 
-    {% if user.email == object.author %}
+    {% if user.username == object.author %}
     <br>
     <br>
-    <a class="btn btn-danger" href="{% url 'delete' pk=object.pk %}" style="float: right">삭제</a>
-    <a class="btn btn-primary" href="{% url 'update' pk=object.pk %}" style="float: right">수정</a>
+    <a class="btn btn-danger" href="{{ Bookmark_get_absolute_url }}}" style="float: right">삭제</a>
+    <a class="btn btn-primary" href="{% url 'bookmark_update' pk=object.pk %}" style="float: right">수정</a>
     {% else %}
     {% endif %}
 

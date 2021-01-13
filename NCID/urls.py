@@ -1,13 +1,12 @@
 from django.urls import path
-from .views import NCID_ListView, create, NCID_DetailView, NCID_UpdateView, NCID_DeleteView, NCID_CreateView, signup
+from .views import NCID_ListView,  NCID_DetailView, NCID_UpdateView, NCID_DeleteView, NCID_CreateView, signup
 from . import views, views_bookmark, views_chat, view_crawling
-from .views_bookmark import  Bookmark_CreateView, Bookmark_DeleteView, Bookmark_DetailView, Bookmark_ListView, Bookmark_UpdateView, bookmark_create
+from .views_bookmark import Bookmark_UpdateView, Bookmark_DeleteView, Bookmark_DetailView, Bookmark_ListView
 from .view_crawling import NCID_SchoolMeal_Detail, crawling, NCID_SchoolMeal_List
 from django.conf.urls import url
 
 urlpatterns = [
     path('', NCID_ListView.as_view(), name = 'list'),
-    path('add/', views.create, name = 'add'),
     path('NCID_add/', views.NCID_CreateView, name='NCID_add'),
 
     path('detail/<int:pk>/', NCID_DetailView.as_view(), name='detail'),
@@ -21,8 +20,7 @@ urlpatterns = [
     path('bookmark/', Bookmark_ListView.as_view(), name='bookmark_list'),
     path('bookmark/detail/<int:pk>/', Bookmark_DetailView.as_view(), name='bookmark_detail'),
     path('bookmark/delete/<int:pk>/', Bookmark_DeleteView.as_view(), name='bookmark_delete'),
-    path('bookmark/update/<int:pk>/', Bookmark_UpdateView.as_view(), name='bookmark_update'),
-    path('bookmark/create/', views_bookmark.bookmark_create, name='bookmark_create'),
+    path('bookmark/update/<int:pk>/', views_bookmark.Bookmark_UpdateView, name='bookmark_update'),
     path('bookmark/bookmark_add', views_bookmark.Bookmark_CreateView, name='bookmark_add'),
 
     path('chat/', views_chat.index, name='index'),

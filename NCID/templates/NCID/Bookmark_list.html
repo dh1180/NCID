@@ -5,7 +5,7 @@
 
     <br>
     <div style="float: right; font-size: 200%;" class="btn btn-dark">
-        <a href="{% url 'bookmark_create' %}" style="color: white">북마크 생성</a>
+        <a href="{% url 'bookmark_add' %}" style="color: white">북마크 생성</a>
     </div>
 
 
@@ -22,7 +22,7 @@
             {% for Bookmark in page_obj %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td width='50%'><a href="{% url 'bookmark_detail' pk=Bookmark.pk %}" style="color: black;">{{Bookmark.url_title}}</a>
+                <td width='50%'><a href="{{ Bookmark.get_absolute_url }}" style="color: black;">{{Bookmark.url_title}}</a>
                 </td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                     <a href="{{ Bookmark.url }}" style="color: black;">{{Bookmark.url}}</a>

@@ -3,11 +3,10 @@
 
 <div class="col-md-7">
 
-    <form action="{% url 'NCID_add' %}" method="get">
+    <form method="post">
         {% csrf_token %}
         <div class="form-group">
             <input type="text" name="title" id="title" class="form-control mt-4 mb-2" placeholder="제목" required>
-
 
             <textarea type="text" name="contents" class="form-control" rows="10" placeholder="내용" required></textarea>
             <br>

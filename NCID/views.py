@@ -33,23 +33,23 @@ def search(request):
 
 
 def NCID_CreateView(request):
-    npc = NPC()
-    npc.author = request.user.username
-    npc.title = request.GET["title"]
-    npc.contents = request.GET["contents"]
-    npc.time = timezone.datetime.now()
-    npc.save()
-    return redirect('list')
-
-def create(request):
+    if request.method == "POST":
+        npc = NPC()
+        npc.author = request.user.username
+        npc.title = request.POST["title"]
+        npc.contents = request.POST["contents"]
+        npc.time = timezone.datetime.now()
+        npc.save()
+        return redirect('list')
     return render(request, 'NCID/NPC_add.html')
+
 
 class NCID_DetailView(DetailView):
     model = NPC
     template_name = 'NCID/NPC_detail.html'
 
+
 def NCID_UpdateView(request, pk):
-    npc_all = NPC.objects.all()
     npc = NPC.objects.get(pk=pk)
     if request.method == "POST":
         npc.title = request.POST['title']
@@ -57,8 +57,7 @@ def NCID_UpdateView(request, pk):
         npc.time = timezone.datetime.now()
         npc.save()
         return redirect('list')
-    else:
-        return render(request, 'NCID/NPC_update.html', {'npc_all': npc_all})
+    return render(request, 'NCID/NPC_update.html', {'npc': npc})
 
 
 class NCID_DeleteView(DeleteView):

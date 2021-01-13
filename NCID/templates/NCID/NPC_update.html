@@ -5,11 +5,11 @@
 <div class="col-md-7">
 
     <form method="post">
+
         {% csrf_token %}
         <div class="form-group">
-            <input type="text" name="title" id="title" class="form-control mt-4 mb-2" placeholder="제목" required>
-{{ npc_all.title }}
-            <textarea type="text" name="contents" class="form-control" rows="10" placeholder="내용" required></textarea>
+            <input type="text" name="title" id="title" class="form-control mt-4 mb-2" placeholder="제목" value="{{ npc.title }}" required>
+            <textarea type="text" name="contents" class="form-control" rows="10" placeholder="내용" required>{{ npc.contents }}</textarea>
             <br>
             <input class="btn btn-primary" type="submit" value="완료" style="float: right">
         </div>
