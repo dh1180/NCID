@@ -10,14 +10,14 @@
     <br>
     {{object.contents}}
     <br>
-{% if object.file %}
+
     <a href="{{ object.file.url }}" download>{{ object.file.name }}</a>
-{% endif %}
+
     {% if user.username == object.author %}
     <br>
     <br>
 
-    <a class="btn btn-danger" href="{% url 'delete' pk=object.pk %}" style="float: right">삭제</a>
+    <a class="btn btn-danger" href="{% url 'university_delete' pk=object.pk %}" style="float: right">삭제</a>
     <a class="btn btn-primary" href="{% url 'update' pk=object.pk %}" style="float: right">수정</a>
     {% else %}
     {% endif %}

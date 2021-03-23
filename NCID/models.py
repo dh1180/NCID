@@ -62,6 +62,7 @@ class NPC(models.Model):
     title = models.CharField(max_length=100)
     contents = models.TextField()
     time = models.DateTimeField(auto_now_add=True, null=True)
+    file = models.FileField(blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -97,6 +98,20 @@ class NPC_school(models.Model):
 
         return reverse('school_detail', args=[str(self.pk)])
 
+
+class NPC_university(models.Model):
+    author = models.CharField(max_length=100, null=True)
+    title = models.CharField(max_length=100)
+    contents = models.TextField()
+    time = models.DateTimeField(auto_now_add=True, null=True)
+    file = models.FileField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+
+        return reverse('university_detail', args=[str(self.pk)])
 
 
 

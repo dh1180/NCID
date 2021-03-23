@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from .models import NPC, User
-from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.utils import timezone
 
-# Create your views here.
 
 class NCID_ListView(ListView):
     model = NPC
@@ -39,6 +37,7 @@ def NCID_CreateView(request):
         npc.title = request.POST["title"]
         npc.contents = request.POST["contents"]
         npc.time = timezone.datetime.now()
+        npc.file = request.FILES['file']
         npc.save()
         return redirect('list')
     return render(request, 'NCID/NPC_add.html')
@@ -54,16 +53,17 @@ def NCID_UpdateView(request, pk):
     if request.method == "POST":
         npc.title = request.POST['title']
         npc.contents = request.POST['contents']
+        npc.file = request.POST['file']
         npc.time = timezone.datetime.now()
         npc.save()
         return redirect('list')
     return render(request, 'NCID/NPC_update.html', {'npc': npc})
 
 
-class NCID_DeleteView(DeleteView):
-    model = NPC
-    success_url = reverse_lazy('list')
-    template_name = 'NCID/NPC_delete.html'
+def NCID_DeleteView(request, pk):
+    ncid = NPC.objects.get(pk=pk)
+    ncid.delete()
+    return redirect('list')
 
 def signup(request):
     if request.method == "POST":
@@ -78,6 +78,7 @@ def signup(request):
         return redirect('signup')
 
     return render(request, 'NCID/signup.html')
+
 
 def login(request):
     if request.method == 'POST':
@@ -94,13 +95,13 @@ def login(request):
     else:
         return render(request, 'NCID/login.html')
 
+
 def logout(request):
     auth.logout(request)
     return redirect('list')
 
+
 def grade(request):
     return render(request, "NCID/grade.html")
 
-def university(request):
-    return render(request, "NCID/university.html")
 
