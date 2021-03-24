@@ -3,7 +3,7 @@
 
 <div class="col-md-7">
 
-    <form method="post" enctype="multipart/form-data" novalidate>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             <input type="text" name="title" id="title" class="form-control mt-4 mb-2" placeholder="제목" required>
@@ -11,7 +11,7 @@
             <textarea type="text" name="contents" class="form-control" rows="10" placeholder="내용" required></textarea>
             <br>
 
-            <input type="file" name="file" accept="image/*, .pdf, .pptx">
+            <input type="file" name="file">
             <input class="btn btn-primary" type="submit" value="완료" style="float: right">
         </div>
     </form>
